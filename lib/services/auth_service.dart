@@ -13,8 +13,10 @@ class AuthService {
           .createUserWithEmailAndPassword(email: email, password: password);
       return userCredential.user;
     } on FirebaseAuthException catch (error) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(error.message.toString())));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(error.message.toString()),
+        backgroundColor: Colors.red,
+      ));
     } catch (error) {
       print(error);
     }
@@ -30,10 +32,13 @@ class AuthService {
           .signInWithEmailAndPassword(email: email, password: password);
       return userCredential.user;
     } on FirebaseAuthException catch (error) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(error.message.toString())));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(error.message.toString()),
+        backgroundColor: Colors.red,
+      ));
     } catch (error) {
       print(error);
     }
+    return null;
   }
 }
